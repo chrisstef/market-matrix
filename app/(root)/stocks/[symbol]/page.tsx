@@ -11,7 +11,7 @@ import {
 
 export default async function StockDetails({ params }: StockDetailsPageProps) {
   const { symbol } = await params;
-  const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
+  const scriptUrl = process.env.NEXT_PUBLIC_SCRIPT_URL;
 
   return (
     <div className="flex min-h-screen p-4 md:p-6 lg:p-8">
