@@ -106,7 +106,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
           JSON.stringify(articles, null, 2)
         );
 
-        const response = await step.ai.infer(`summarize-news-${user.email}`, {
+        const response = await step.ai.infer(`summarize-news-${user.id}`, {
           model: step.ai.models.gemini({ model: "gemini-2.5-flash-lite" }),
           body: {
             contents: [{ role: "user", parts: [{ text: prompt }] }],
@@ -119,7 +119,7 @@ export const sendDailyNewsSummary = inngest.createFunction(
 
         userNewsSummaries.push({ user, newsContent });
       } catch (e) {
-        console.error("Failed to summarize news for : ", user.email);
+        console.error("Failed to summarize news for: ", user.email);
         userNewsSummaries.push({ user, newsContent: null });
       }
     }
