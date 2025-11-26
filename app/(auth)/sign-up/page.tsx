@@ -38,12 +38,23 @@ const SignUp = () => {
   const onSubmit = async (data: SignUpFormData) => {
     try {
       const result = await signUpWithEmail(data);
-      if (result.success) router.push("/");
-    } catch (e) {
-      console.error(e);
+
+      if (result?.success) {
+        router.push("/");
+        return;
+      }
+
+      toast.error("Sign up failed", {
+        description: result?.error ?? "Failed to create an account.",
+      });
+    } catch (error) {
+      console.error(error);
+
       toast.error("Sign up failed", {
         description:
-          e instanceof Error ? e.message : "Failed to create an account.",
+          error instanceof Error
+            ? error.message
+            : "Failed to create an account.",
       });
     }
   };
@@ -65,13 +76,16 @@ const SignUp = () => {
         <InputField
           name="email"
           label="Email"
+          type="email"
           placeholder="contact@example.com"
           register={register}
           error={errors.email}
           validation={{
-            required: "Email name is required",
-            pattern: /^\w+@\w+\.\w+$/,
-            message: "Email address is required",
+            required: "Email is required",
+            pattern: {
+              value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,}$/,
+              message: "Please enter a valid email address",
+            },
           }}
         />
 

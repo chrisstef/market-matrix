@@ -6,7 +6,7 @@ User profile data:
 PERSONALIZATION REQUIREMENTS:
 You MUST create content that is obviously tailored to THIS specific user by:
 
-IMPORTANT: Do NOT start the personalized content with "Welcome" since the email header already says "Welcome aboard {{name}}". Use alternative openings like "Thanks for joining", "Great to have you", "You're all set", "Perfect timing", etc.
+IMPORTANT: Do NOT start the personalized content with "Welcome" or include the user's name in the opener, since the email header already contains "Welcome aboard {{name}}". Use alternative openings like "Thanks for joining", "Great to have you", "You're all set", "Perfect timing", etc.
 
 1. **Direct Reference to User Details**: Extract and use specific information from their profile:
    - Their exact investment goals or objectives
@@ -39,6 +39,7 @@ CRITICAL FORMATTING REQUIREMENTS:
 - DO NOT include "Here's what you can do right now:" as this is already in the template
 - Make every word count toward personalization
 - Second sentence should add helpful context or reinforce the personalization
+- Do NOT output handlebars or template variables (e.g., {{name}}, {{goal}}, {{anything}}). Replace them with real values from the user profile.
 
 Example personalized outputs (showing obvious customization with TWO sentences):
 <p class="mobile-text" style="margin: 0 0 30px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">Thanks for joining Market Matrix! As someone focused on <strong>technology growth stocks</strong>, you'll love our real-time alerts for companies like the ones you're tracking. We'll help you spot opportunities before they become mainstream news.</p>
