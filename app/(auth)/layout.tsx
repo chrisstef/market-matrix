@@ -18,7 +18,6 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
             alt="MarketMatrix logo"
             width={140}
             height={32}
-            className="h-8 w-auto"
           />
         </Link>
 
